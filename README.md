@@ -16,7 +16,7 @@ EOF
 fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait Mars.fst | dot -Tjpg >Mars.jpg
 ```
 
-![Mars.fst](https://github.com/HuaMuLanChina/Page/blob/gh-pages/Mars.jpg)
+![Mars.fst](./Mars.jpg)
 
 ```
 fstcompile --isymbols=ascii.syms --osymbols=wotw.syms >Martian.fst <<EOF
