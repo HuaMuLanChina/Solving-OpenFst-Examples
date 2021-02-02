@@ -1,2 +1,1 @@
-# HuaMuLan.github.io
-玩
+# attempt to solve fst examples
