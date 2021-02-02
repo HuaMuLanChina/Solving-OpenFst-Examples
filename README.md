@@ -31,7 +31,7 @@ fstcompile --isymbols=ascii.syms --osymbols=wotw.syms >Martian.fst <<EOF
 EOF
 ```
 
-![Martian.fst](https://github.com/HuaMuLanChina/Page/blob/gh-pages/Martian.jpg)
+![Martian.fst](./Martian.jpg)
 
 ```
 fstcompile --isymbols=ascii.syms --osymbols=wotw.syms >man.fst <<EOF
@@ -42,7 +42,7 @@ fstcompile --isymbols=ascii.syms --osymbols=wotw.syms >man.fst <<EOF
 EOF
 ```
 
-![man.fst](https://github.com/HuaMuLanChina/Page/blob/gh-pages/man.jpg)
+![man.fst](./man.jpg)
 
 ```
 fstunion man.fst Mars.fst | fstunion - Martian.fst | fstclosure >lexicon.fst
@@ -52,7 +52,7 @@ fstunion man.fst Mars.fst | fstunion - Martian.fst | fstclosure >lexicon.fst
 fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait lexicon.fst | dot -Tjpg -Gdpi=150 >lexicon.jpg
 ```
 
-![lexicon.fst](https://github.com/HuaMuLanChina/Page/blob/gh-pages/lexicon.jpg)
+![lexicon.fst](./lexicon.jpg)
 
 ```
 fstrmepsilon lexicon.fst | fstdeterminize | fstminimize >lexicon_opt.fst
@@ -62,7 +62,7 @@ fstrmepsilon lexicon.fst | fstdeterminize | fstminimize >lexicon_opt.fst
 fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait lexicon_opt.fst | dot -Tjpg >lexicon_opt.jpg
 ```
 
-![lexicon_opt.fst](https://github.com/HuaMuLanChina/Page/blob/gh-pages/lexicon_opt.jpg)
+![lexicon_opt.fst](./lexicon_opt.jpg)
 
 ```
 fstcompile --isymbols=ascii.syms --osymbols=wotw.syms >punct.fst <<EOF
@@ -75,7 +75,7 @@ fstcompile --isymbols=ascii.syms --osymbols=wotw.syms >punct.fst <<EOF
 EOF
 ```
 
-![punct.fst](https://github.com/HuaMuLanChina/Page/blob/gh-pages/punct.jpg)
+![punct.fst](./punct.jpg)
 
 ```
 fstunion man.fst Mars.fst | fstunion - Martian.fst | fstconcat - punct.fst | fstclosure >lexicon_punc.fst
@@ -85,7 +85,7 @@ fstunion man.fst Mars.fst | fstunion - Martian.fst | fstconcat - punct.fst | fst
 fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait lexicon_punc.fst | dot -Tjpg -Gdpi=200>lexicon_punc.jpg
 ```
 
-![punct.fst](https://github.com/HuaMuLanChina/Page/blob/gh-pages/lexicon_punc.jpg)
+![punct.fst](./lexicon_punc.jpg)
 
 ```
 fstcompile --isymbols=ascii.syms --osymbols=ascii.syms >Marsman.fst <<EOF
@@ -105,5 +105,5 @@ EOF
 fstdraw --isymbols=ascii.syms --osymbols=ascii.syms -portrait Marsman.fst | dot -Tjpg >Marsman.jpg
 ```
 
-![Marsman.fst](https://github.com/HuaMuLanChina/Page/blob/gh-pages/Marsman.jpg)
+![Marsman.fst](./Marsman.jpg)
 
