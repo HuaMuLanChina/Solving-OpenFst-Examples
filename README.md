@@ -111,12 +111,15 @@ fstdraw --isymbols=ascii.syms --osymbols=ascii.syms -portrait Marsman.fst | dot 
 
 (a) Create a transducer that maps numbers in the range 0 - 999999 represented as digit strings to their English read form, e.g.:
 
+```
 1 -> one
 11 -> eleven
 111 -> one hundred eleven
 1111 -> one thousand one hundred eleven
 11111 -> eleven thousand one hundred eleven
+```
 
+for one one game:
 ```
 fstcompile --isymbols=ascii.syms --osymbols=wotw.syms >1.fst <<EOF
 0 1 1 one
@@ -209,6 +212,42 @@ fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait 5m1.fst | dot -Tjpg
 
 ![5m1.fst](./5m1.jpg)
 
+
+```
+fstcompile --isymbols=ascii.syms --osymbols=ascii.syms >input1.fst <<EOF
+0 1 1 1
+1 2 1 1
+2 3 1 1
+3 4 1 1
+4 5 <space> <space>
+5 6 1 1
+6 7 1 1
+7 8 1 1
+8 9 , ,
+9 10 1 1
+10 11 . .
+11
+EOF
+```
+
+```
+fstdraw --isymbols=ascii.syms --osymbols=ascii.syms -portrait input1.fst | dot -Tjpg -Gdpi=150>input1.jpg
+```
+
+![input1.fst](./input1.jpg)
+
+```
+fstcompose input1.fst 5m1.fst | fstproject --project_output | fstrmepsilon > out1.fst
+```
+
+```
+fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait out1.fst | dot -Tjpg -Gdpi=150>out1.jpg
+```
+
+![out1.fst](./out1.jpg)
+
+
+for range 0 - 999999 :
 
 add to wotw.syms
 
