@@ -107,3 +107,190 @@ fstdraw --isymbols=ascii.syms --osymbols=ascii.syms -portrait Marsman.fst | dot 
 
 ![Marsman.fst](./Marsman.jpg)
 
+# Exercise 1
+
+(a) Create a transducer that maps numbers in the range 0 - 999999 represented as digit strings to their English read form, e.g.:
+
+1 -> one
+11 -> eleven
+111 -> one hundred eleven
+1111 -> one thousand one hundred eleven
+11111 -> eleven thousand one hundred eleven
+
+```
+fstcompile --isymbols=ascii.syms --osymbols=wotw.syms >1.fst <<EOF
+0 1 1 one
+1
+EOF
+```
+
+```
+fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait 1.fst | dot -Tjpg >1.jpg
+```
+
+![1.fst](./1.jpg)
+
+```
+fstcompile --isymbols=ascii.syms --osymbols=wotw.syms >11.fst <<EOF
+0 1 1 eleven
+1 2 1 <epsilon>
+2
+EOF
+```
+
+```
+fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait 11.fst | dot -Tjpg >11.jpg
+```
+
+![11.fst](./11.jpg)
+
+```
+fstcompile --isymbols=ascii.syms --osymbols=wotw.syms >111.fst <<EOF
+0 1 1 one
+1 2 <epsilon> hundred
+2 3 <epsilon> eleven
+3 4 1 <epsilon>
+4 5 1 <epsilon>
+5
+EOF
+```
+
+```
+fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait 111.fst | dot -Tjpg >111.jpg
+```
+
+![111.fst](./111.jpg)
+
+
+```
+fstcompile --isymbols=ascii.syms --osymbols=wotw.syms >1111.fst <<EOF
+0 1 1 one
+1 2 <epsilon> thousand
+2 3 <epsilon> one
+3 4 <epsilon> hundred
+4 5 <epsilon> eleven
+5 6 1 <epsilon>
+6 7 1 <epsilon>
+7 8 1 <epsilon>
+8
+EOF
+```
+
+```
+fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait 1111.fst | dot -Tjpg -Gdpi=150>1111.jpg
+```
+
+```
+fstcompile --isymbols=ascii.syms --osymbols=wotw.syms >11111.fst <<EOF
+0 1 1 eleven
+1 2 <epsilon> thousand
+2 3 <epsilon> one
+3 4 <epsilon> hundred
+4 5 <epsilon> eleven
+5 6 1 <epsilon>
+6 7 1 <epsilon>
+7 8 1 <epsilon>
+8 9 1 <epsilon>
+9
+EOF
+```
+
+```
+fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait 11111.fst | dot -Tjpg -Gdpi=150>11111.jpg
+```
+
+```
+fstunion 1.fst 11.fst | fstunion - 111.fst | fstunion - 1111.fst | fstunion - 11111.fst | fstconcat - punct.fst | fstclosure > 5m1.fst
+```
+
+```
+fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait 5m1.fst | dot -Tjpg -Gdpi=300>5m1.jpg
+```
+
+![5m1.fst](./5m1.jpg)
+
+
+add to wotw.syms
+
+```
+seventeen   7103
+eighteen    7104
+nineteen    7105
+sixty   7106
+seventy 7107
+eighty  7108
+```
+
+```
+fstcompile --isymbols=ascii.syms --osymbols=ascii.syms > is_digit.fst << EOF
+0 1 1 1
+0 1 2 2
+0 1 3 3
+0 1 4 4
+0 1 5 5
+0 1 6 6
+0 1 7 7
+0 1 8 8
+0 1 9 9
+0 1 0 0
+1
+EOF
+```
+
+```
+fstdraw --isymbols=ascii.syms --osymbols=ascii.syms -portrait is_digit.fst | dot -Tjpg >is_digit.jpg
+```
+
+```
+fstcompile --isymbols=ascii.syms --osymbols=wotw.syms > name0.fst << EOF
+0 1 1 one
+0 1 2 two
+0 1 3 three
+0 1 4 four
+0 1 5 five
+0 1 6 six
+0 1 7 seven
+0 1 8 eight
+0 1 9 nine
+1
+EOF
+```
+
+```
+fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name0.fst | dot -Tjpg >name0.jpg
+```
+
+```
+fstcompile --isymbols=ascii.syms --osymbols=wotw.syms > name1.fst << EOF
+0 1 1 <epsilon>
+1 2 0 ten
+1 2 1 eleven
+1 2 2 twelve
+1 2 3 thirteen
+1 2 4 fourteen
+1 2 5 fifteen
+1 2 6 sixteen
+1 2 7 seventeen
+1 2 8 eighteen
+1 2 9 nineteen
+2
+EOF
+```
+
+```
+fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name1.fst | dot -Tjpg >name1.jpg
+```
+
+```
+fstcompile --isymbols=ascii.syms --osymbols=wotw.syms > name2.fst << EOF
+0 1 2 twenty
+0 1 3 thirty
+0 1 4 forty
+0 1 5 fifty
+0 1 6 sixty
+0 1 7 seventy
+0 1 8 eighty
+0 1 9 ninety
+1
+EOF
+```
