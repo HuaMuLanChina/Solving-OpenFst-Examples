@@ -343,3 +343,5 @@ EOF
 ```
 fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name2pre.fst | dot -Tjpg >name2pre.jpg
 ```
+
+![name2pre.fst](./name2pre.jpg)
