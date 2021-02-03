@@ -323,7 +323,7 @@ fstcompose test7.fst name0.fst | fstproject --project_output | fstrmepsilon > te
 fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait test7_out.fst | dot -Tjpg >test7_out.jpg
 ```
 
-for 2 digit(10<=,<20):
+for 2 digits(10<=,<20):
 ```
 fstcompile --isymbols=ascii.syms --osymbols=wotw.syms > name1.fst << EOF
 0 1 1 <epsilon>
@@ -347,7 +347,7 @@ fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name1.fst | dot -Tj
 
 ![name1.fst](./name1.jpg)
 
-try 2 digit(10<=,>20):
+testing 2 digits(10<=,>20):
 
 ```
 fstcompile --isymbols=ascii.syms --osymbols=ascii.syms > test15.fst << EOF
@@ -369,7 +369,7 @@ fstcompose test15.fst name1.fst | fstproject --project_output | fstrmepsilon > t
 fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait test15_out.fst | dot -Tjpg >test15_out.jpg
 ```
 
-for 2 digit(>20):
+for 2 digits(>20):
 
 ```
 fstcompile --isymbols=ascii.syms --osymbols=wotw.syms > name2pre.fst << EOF
@@ -411,7 +411,7 @@ fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name2_opt.fst | dot
 
 ![name2_opt.fst](./name2_opt.jpg)
 
-testing 2 digit:
+testing 2 digits:
 
 ```
 fstcompile --isymbols=ascii.syms --osymbols=ascii.syms > test35.fst <<EOF
@@ -433,7 +433,7 @@ fstcompose test35.fst name2_opt.fst | fstproject --project_output | fstrmepsilon
 fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait test35_out.fst | dot -Tjpg >test35_out.jpg
 ```
 
-for 3 digit:
+for 3 digits:
 
 ```
 fstcompile --isymbols=ascii.syms --osymbols=wotw.syms > hundred.fst << EOF
@@ -453,7 +453,7 @@ fstconcat name0.fst hundred.fst | fstconcat - name2.fst > name3.fst
 ```
 
 ```
-fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name3.fst | dot -Tjpg -Gdip=300>name3.jpg
+fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name3.fst | dot -Tjpg -Gdpi=150>name3.jpg
 ```
 
 ![name3.fst](./name3.jpg)
@@ -463,12 +463,12 @@ fstrmepsilon name3.fst | fstdeterminize | fstminimize >name3_opt.fst
 ```
 
 ```
-fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name3_opt.fst | dot -Tjpg -Gdip=300>name3_opt.jpg
+fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name3_opt.fst | dot -Tjpg -Gdpi=150>name3_opt.jpg
 ```
 
 ![name3_opt.fst](./name3_opt.jpg)
 
-testing 3 digit:
+testing 3 digits:
 
 ```
 fstcompile --isymbols=ascii.syms --osymbols=ascii.syms > test234.fst << EOF
@@ -488,3 +488,54 @@ fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait test234_out.fst | do
 ```
 
 ![test234_out.fst](./test234_out.jpg)
+
+for 4 digits:
+
+```
+fstcompile --isymbols=ascii.syms --osymbols=wotw.syms > thousand.fst << EOF
+0 1 <epsilon> thousand
+1
+EOF
+```
+
+```
+fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait thousand.fst | dot -Tjpg >thousand.jpg
+```
+
+![thousand.fst](./thousand.jpg)
+
+```
+fstconcat name0.fst thousand.fst | fstconcat - name3.fst > name4.fst
+```
+
+```
+fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name4.fst | dot -Tjpg -Gdpi=250>name4.jpg
+```
+
+```
+fstrmepsilon name4.fst | fstdeterminize | fstminimize > name4_opt.fst
+```
+
+```
+fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name4_opt.fst | dot -Tjpg -Gdpi=250>name4_opt.jpg
+```
+
+testing 4 digits:
+
+```
+fstcompile --isymbols=ascii.syms --osymbols=ascii.syms > test3467.fst << EOF
+0 1 3 3
+1 2 4 4
+2 3 6 6
+3 4 7 7
+4
+EOF
+```
+
+```
+fstcompose test3467.fst name4_opt.fst | fstproject --project_output | fstrmepsilon > test3467_out.fst
+```
+
+```
+fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait test3467_out.fst | dot -Tjpg >test3467_out.jpg
+```
