@@ -665,6 +665,8 @@ fstrmepsilon name5.fst | fstdeterminize | fstminimize > name5_opt.fst
 fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name5_opt.fst | dot -Tjpg -Gdpi=150>name5_opt.jpg
 ```
 
+![name5_opt.fst](./name5_opt.jpg)
+
 testing 5 digits:
 
 ```
@@ -682,6 +684,8 @@ EOF
 fstdraw --isymbols=ascii.syms --osymbols=ascii.syms -portrait test46789.fst | dot -Tjpg >test46789.jpg
 ```
 
+![test46789.fst](./test46789.jpg)
+
 ```
 fstcompose test46789.fst name5_opt.fst | fstproject --project_output | fstrmepsilon > test46789_out.fst
 ```
@@ -689,3 +693,5 @@ fstcompose test46789.fst name5_opt.fst | fstproject --project_output | fstrmepsi
 ```
 fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait test46789_out.fst | dot -Tjpg -Gdpi=150>test46789_out.jpg
 ```
+
+![test46789_out.fst](./test46789_out.jpg)
