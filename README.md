@@ -280,6 +280,8 @@ EOF
 fstdraw --isymbols=ascii.syms --osymbols=ascii.syms -portrait is_digit.fst | dot -Tjpg >is_digit.jpg
 ```
 
+![is_digit.fst](./is_digit.jpg)
+
 ```
 fstcompile --isymbols=ascii.syms --osymbols=wotw.syms > name0.fst << EOF
 0 1 1 one
@@ -298,6 +300,8 @@ EOF
 ```
 fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name0.fst | dot -Tjpg >name0.jpg
 ```
+
+![name0.fst](./name0.jpg)
 
 ```
 fstcompile --isymbols=ascii.syms --osymbols=wotw.syms > name1.fst << EOF
@@ -320,8 +324,10 @@ EOF
 fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name1.fst | dot -Tjpg >name1.jpg
 ```
 
+![name1.fst](./name1.jpg)
+
 ```
-fstcompile --isymbols=ascii.syms --osymbols=wotw.syms > name2.fst << EOF
+fstcompile --isymbols=ascii.syms --osymbols=wotw.syms > name2pre.fst << EOF
 0 1 2 twenty
 0 1 3 thirty
 0 1 4 forty
@@ -332,4 +338,8 @@ fstcompile --isymbols=ascii.syms --osymbols=wotw.syms > name2.fst << EOF
 0 1 9 ninety
 1
 EOF
+```
+
+```
+fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name2pre.fst | dot -Tjpg >name2pre.jpg
 ```
