@@ -512,6 +512,8 @@ fstconcat name0.fst thousand.fst | fstconcat - name3.fst > name4.fst
 fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name4.fst | dot -Tjpg -Gdpi=250>name4.jpg
 ```
 
+![name4.fst](./name4.jpg)
+
 ```
 fstrmepsilon name4.fst | fstdeterminize | fstminimize > name4_opt.fst
 ```
@@ -519,6 +521,8 @@ fstrmepsilon name4.fst | fstdeterminize | fstminimize > name4_opt.fst
 ```
 fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name4_opt.fst | dot -Tjpg -Gdpi=250>name4_opt.jpg
 ```
+
+![name4_opt.fst](./name4_opt.jpg)
 
 testing 4 digits:
 
@@ -539,3 +543,5 @@ fstcompose test3467.fst name4_opt.fst | fstproject --project_output | fstrmepsil
 ```
 fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait test3467_out.fst | dot -Tjpg >test3467_out.jpg
 ```
+
+![test3467_out.fst](./test3467_out.jpg)
