@@ -695,3 +695,97 @@ fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait test46789_out.fst | 
 ```
 
 ![test46789_out.fst](./test46789_out.jpg)
+
+
+for 6 digits:
+
+```
+fstconcat name3.fst thousand.fst | fstconcat - name3.fst > name6.fst
+```
+
+```
+fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name6.fst | dot -Tjpg -Gdpi=450>name6.jpg
+```
+
+![name6.fst](./name6.jpg)
+
+```
+fstrmepsilon name6.fst | fstdeterminize | fstminimize > name6_opt.fst
+```
+
+```
+fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name6_opt.fst | dot -Tjpg -Gdpi=250>name6_opt.jpg
+```
+
+![name6_opt.fst](./name6_opt.jpg)
+
+testing 6 digits:
+
+```
+fstcompile --isymbols=ascii.syms --osymbols=ascii.syms > test467890.fst << EOF
+0 1 4 4
+1 2 6 6
+2 3 7 7
+3 4 8 8
+4 5 9 9
+5 6 0 0
+6
+EOF
+```
+
+```
+fstdraw --isymbols=ascii.syms --osymbols=ascii.syms -portrait test467890.fst | dot -Tjpg >test467890.jpg
+```
+
+![test467890.fst](./test467890.jpg)
+
+```
+fstcompose test467890.fst name6_opt.fst | fstproject --project_output | fstrmepsilon > test467890_out.fst
+```
+
+```
+fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait test467890_out.fst | dot -Tjpg -Gdpi=150>test467890_out.jpg
+```
+
+![test467890_out.fst](./test467890_out.jpg)
+
+for (0 - 999999):
+
+```
+fstunion name0.fst name1.fst | fstrmepsilon | fstdeterminize | fstminimize > name01.fst
+fstunion name01.fst name2.fst | fstrmepsilon | fstdeterminize | fstminimize > name012.fst
+fstunion name012.fst name3.fst | fstrmepsilon | fstdeterminize | fstminimize > name0123.fst
+fstunion name0123.fst name4.fst | fstrmepsilon | fstdeterminize | fstminimize > name01234.fst
+fstunion name01234.fst name5.fst | fstrmepsilon | fstdeterminize | fstminimize > name012345.fst
+fstunion name012345.fst name6.fst | fstrmepsilon | fstdeterminize | fstminimize > final.fst
+```
+
+testing (0 - 999999):
+
+```
+fstcompose test7.fst final.fst | fstproject --project_output | fstrmepsilon > final7.fst
+fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait final7.fst | dot -Tjpg>final7.jpg
+```
+
+![final7.fst](./final7.jpg)
+
+```
+fstcompose test35.fst final.fst | fstproject --project_output | fstrmepsilon > final35.fst
+fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait final35.fst | dot -Tjpg>final35.jpg
+```
+
+![final35.fst](./final35.jpg)
+
+```
+fstcompose test50.fst final.fst | fstproject --project_output | fstrmepsilon > final50.fst
+fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait final50.fst | dot -Tjpg>final50.jpg
+```
+
+![final50.fst](./final50.jpg)
+
+```
+fstcompose test200.fst final.fst | fstproject --project_output | fstrmepsilon > final200.fst
+fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait final200.fst | dot -Tjpg>final200.jpg
+```
+
+![final200.fst](./final200.jpg)
