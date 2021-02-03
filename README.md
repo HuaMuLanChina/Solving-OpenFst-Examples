@@ -369,6 +369,8 @@ fstcompose test15.fst name1.fst | fstproject --project_output | fstrmepsilon > t
 fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait test15_out.fst | dot -Tjpg >test15_out.jpg
 ```
 
+for 2 digit(>20):
+
 ```
 fstcompile --isymbols=ascii.syms --osymbols=wotw.syms > name2pre.fst << EOF
 0 1 2 twenty
@@ -389,8 +391,6 @@ fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name2pre.fst | dot 
 
 ![name2pre.fst](./name2pre.jpg)
 
-try 2 digit(>20):
-
 ```
 fstconcat name2pre.fst name0.fst > name2.fst
 ```
@@ -399,6 +399,8 @@ fstconcat name2pre.fst name0.fst > name2.fst
 fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name2.fst | dot -Tjpg >name2.jpg
 ```
 
+![name2.fst](./name2.jpg)
+
 ```
 fstrmepsilon name2.fst | fstdeterminize | fstminimize >name2_opt.fst
 ```
@@ -406,6 +408,8 @@ fstrmepsilon name2.fst | fstdeterminize | fstminimize >name2_opt.fst
 ```
 fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name2_opt.fst | dot -Tjpg >name2_opt.jpg
 ```
+
+![name2_opt.fst](./name2_opt.jpg)
 
 testing 2 digit:
 
