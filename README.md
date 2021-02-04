@@ -835,3 +835,85 @@ fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait final467890.fst | do
 ```
 
 ![final467890.fst](./final467890.jpg)
+
+(b) Incorporate this transduction into the letter-to-token transduction above and apply to the input Mars is 4225 miles across. represented as letters.
+
+```
+fstcompile --isymbols=ascii.syms --osymbols=wotw.syms > is.fst << EOF
+0 1 i is
+1 2 s <epsilon>
+2
+EOF
+
+fstcompile --isymbols=ascii.syms --osymbols=wotw.syms > miles.fst << EOF
+0 1 m miles
+1 2 i <epsilon>
+2 3 l <epsilon>
+3 4 e <epsilon>
+4 5 s <epsilon>
+5
+EOF
+
+fstcompile --isymbols=ascii.syms --osymbols=wotw.syms > across.fst << EOF
+0 1 a across
+1 2 c <epsilon>
+2 3 r <epsilon>
+3 4 o <epsilon>
+4 5 s <epsilon>
+5 6 s <epsilon>
+6
+EOF
+
+fstunion Mars.fst is.fst | fstunion - miles.fst | fstunion - across.fst >words.fst
+fstrmepsilon words.fst | fstdeterminize | fstminimize >words_opt.fst
+fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait words_opt.fst | dot -Tjpg -Gdpi=200>words_opt.jpg
+```
+![words_opt.fst](./words_opt.jpg)
+
+```
+fstunion words_opt.fst final.fst | fstconcat - punct.fst | fstclosure > exe1.fst
+```
+
+```
+fstcompile --isymbols=ascii.syms --osymbols=ascii.syms > input.fst << EOF
+0 1 M M
+1 2 a a
+2 3 r r
+3 4 s s
+4 5 <space> <space>
+5 6 i i
+6 7 s s
+7 8 <space> <space>
+8 9 4 4
+9 10 2 2
+10 11 2 2
+11 12 5 5
+12 13 <space> <space>
+13 14 m m
+14 15 i i
+15 16 l l
+16 17 e e
+17 18 s s
+18 19 <space> <space>
+19 20 a a
+20 21 c c
+21 22 r r
+22 23 o o
+23 24 s s
+24 25 s s
+25 26 . .
+26
+EOF
+
+fstdraw --isymbols=ascii.syms --osymbols=ascii.syms -portrait input.fst | dot -Tjpg >input.jpg
+```
+
+![input.fst](./input.jpg)
+
+```
+fstcompose input.fst exe1.fst | fstproject --project_output  | fstrmepsilon >Mars_is_4225_miles_across.fst
+fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait Mars_is_4225_miles_across.fst | dot -Tjpg -Gdpi=200>Mars_is_4225_miles_across.jpg
+```
+
+![Mars_is_4225_miles_across.fst](./Mars_is_4225_miles_across.jpg)
+
