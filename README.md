@@ -101,11 +101,22 @@ fstcompile --isymbols=ascii.syms --osymbols=ascii.syms >Marsman.fst <<EOF
 9
 EOF
 ```
+
 ```
 fstdraw --isymbols=ascii.syms --osymbols=ascii.syms -portrait Marsman.fst | dot -Tjpg >Marsman.jpg
 ```
 
 ![Marsman.fst](./Marsman.jpg)
+
+```
+fstcompose Marsman.fst lexicon_punc.fst | fstproject --project_output | fstrmepsilon >tokens.fst
+```
+
+```
+fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait tokens.fst | dot -Tjpg >tokens.jpg
+```
+
+![tokens.fst](./tokens.jpg)
 
 # Exercise 1
 
