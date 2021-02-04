@@ -789,3 +789,38 @@ fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait final200.fst | dot -
 ```
 
 ![final200.fst](./final200.jpg)
+
+```
+fstcompose test204.fst final.fst | fstproject --project_output | fstrmepsilon > final204.fst
+fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait final204.fst | dot -Tjpg>final204.jpg
+```
+
+![final204.fst](./final204.jpg)
+
+```
+fstcompose test234.fst final.fst | fstproject --project_output | fstrmepsilon > final234.fst
+fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait final234.fst | dot -Tjpg>final234.jpg
+```
+
+![final234.fst](./final234.jpg)
+
+```
+fstcompose test3467.fst final.fst | fstproject --project_output | fstrmepsilon > final3467.fst
+fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait final3467.fst | dot -Tjpg -Gdpi=150>final3467.jpg
+```
+
+![final3467.fst](./final3467.jpg)
+
+```
+fstcompose test46789.fst final.fst | fstproject --project_output | fstrmepsilon > final46789.fst
+fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait final46789.fst | dot -Tjpg -Gdpi=150>final46789.jpg
+```
+
+![final46789.fst](./final46789.jpg)
+
+```
+fstcompose test467890.fst final.fst | fstproject --project_output | fstrmepsilon > final467890.fst
+fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait final467890.fst | dot -Tjpg -Gdpi=150>final467890.jpg
+```
+
+![final467890.fst](./final467890.jpg)
