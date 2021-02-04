@@ -905,7 +905,7 @@ fstcompile --isymbols=ascii.syms --osymbols=ascii.syms > input.fst << EOF
 26
 EOF
 
-fstdraw --isymbols=ascii.syms --osymbols=ascii.syms -portrait input.fst | dot -Tjpg >input.jpg
+fstdraw --isymbols=ascii.syms --osymbols=ascii.syms -portrait input.fst | dot -Tjpg -Gdpi=300>input.jpg
 ```
 
 ![input.fst](./input.jpg)
