@@ -103,7 +103,7 @@ EOF
 ```
 
 ```
-fstdraw --isymbols=ascii.syms --osymbols=ascii.syms -portrait Marsman.fst | dot -Tjpg >Marsman.jpg
+fstdraw --isymbols=ascii.syms --osymbols=ascii.syms -portrait Marsman.fst | dot -Tjpg -Gdpi=150>Marsman.jpg
 ```
 
 ![Marsman.fst](./Marsman.jpg)
