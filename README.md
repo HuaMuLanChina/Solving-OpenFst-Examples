@@ -410,7 +410,7 @@ fstunion name0.fst 0.fst | fstconcat name2pre.fst - | fstunion - name1.fst > nam
 ```
 
 ```
-fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name2.fst | dot -Tjpg >name2.jpg
+fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name2.fst | dot -Tjpg -Gdpi=150>name2.jpg
 ```
 
 ![name2.fst](./name2.jpg)
@@ -652,7 +652,7 @@ fstunion name1.fst name2.fst | fstconcat - thousand.fst | fstconcat - name3.fst 
 ```
 
 ```
-fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name5.fst | dot -Tjpg -Gdpi=250>name5.jpg
+fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name5.fst | dot -Tjpg -Gdpi=400>name5.jpg
 ```
 
 ![name5.fst](./name5.jpg)
@@ -704,7 +704,7 @@ fstconcat name3.fst thousand.fst | fstconcat - name3.fst > name6.fst
 ```
 
 ```
-fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name6.fst | dot -Tjpg -Gdpi=450>name6.jpg
+fstdraw --isymbols=ascii.syms --osymbols=wotw.syms -portrait name6.fst | dot -Tjpg -Gdpi=550>name6.jpg
 ```
 
 ![name6.fst](./name6.jpg)
@@ -820,7 +820,7 @@ fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait final46789.fst | dot
 
 ```
 fstcompose test467890.fst final.fst | fstproject --project_output | fstrmepsilon > final467890.fst
-fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait final467890.fst | dot -Tjpg -Gdpi=150>final467890.jpg
+fstdraw --isymbols=wotw.syms --osymbols=wotw.syms -portrait final467890.fst | dot -Tjpg -Gdpi=200>final467890.jpg
 ```
 
 ![final467890.fst](./final467890.jpg)
